@@ -3,7 +3,9 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -15,7 +17,14 @@ public class Persistence {
         fichier = new File(unNom);
     }
 
-    public void sauve(ObservableList<Seance> uneListe){
+    public void sauve(ObservableList<Seance> uneListe) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fichier.getName()));
+        for (Seance seance : uneListe){
+            writer.write(seance.getNature() + " " + seance.getMatiere() + " " + seance.getEnseignant() + " " + seance.getDate().getYear() + " " + seance.getDate().getMonth() + " "
+                    + seance.getDate().getDayOfMonth() + " " + seance.getHeure() + " " + seance.getDuree());
+        }
+
+
 
     }
 
@@ -36,6 +45,9 @@ public class Persistence {
             }
 
             s.close();
+        }
+        catch (Exception e){
+
         }
 
 
