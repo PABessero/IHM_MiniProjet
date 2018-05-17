@@ -35,12 +35,12 @@ public class Persistence {
             Scanner s = new Scanner(fichier);
             while (s.hasNext()){
                 Seance seance = new Seance();
-                seance.setMatiere(s.next());
-                seance.setDuree(s.nextInt());
-                seance.setEnseignant(s.next());
-                seance.setHeure(LocalDate.parse(s.next()));
                 seance.setNature(s.next());
+                seance.setMatiere(s.next());
+                seance.setEnseignant(s.next());
                 seance.setDate(LocalDate.of(s.nextInt(), s.nextInt(), s.nextInt()));
+                seance.setHeure(LocalDate.parse(s.next()));
+                seance.setDuree(s.nextInt());
                 seances.add(seance);
             }
 
